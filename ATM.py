@@ -1,44 +1,12 @@
+from operations import check_balance, withdraw_money, deposit_money
+
+
 def display_menu():
-    print("\n=== ATM Simulator ===")
-    print("1. Check balance")
-    print("2. Withdraw money")
-    print("3. Deposit money")
-    print("4. Exit")
-
-
-def get_valid_amount(prompt):
-    while True:
-        try:
-            amount = float(input(prompt))
-            if amount <= 0:
-                print("Amount must be greater than zero.")
-            else:
-                return amount
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-
-
-def check_balance(balance):
-    print(f"Your current balance: {balance:.2f}")
-
-
-def withdraw_money(balance):
-    amount = get_valid_amount("Enter amount to withdraw: ")
-
-    if amount > balance:
-        print("Insufficient funds.")
-        return balance
-
-    balance -= amount
-    print("Withdrawal successful.")
-    return balance
-
-
-def deposit_money(balance):
-    amount = get_valid_amount("Enter amount to deposit: ")
-    balance += amount
-    print("Deposit successful.")
-    return balance
+    print("\n=== Банкомат ===")
+    print("1. Проверить баланс")
+    print("2. Снять деньги")
+    print("3. Пополнить счет")
+    print("4. Выход")
 
 
 def main():
@@ -46,7 +14,7 @@ def main():
 
     while True:
         display_menu()
-        choice = input("Select an option: ")
+        choice = input("Выберите действие: ")
 
         if choice == "1":
             check_balance(balance)
@@ -58,14 +26,12 @@ def main():
             balance = deposit_money(balance)
 
         elif choice == "4":
-            print("Goodbye!")
+            print("До свидания!")
             break
 
         else:
-            print("Invalid option. Try again.")
+            print("Неверный выбор. Попробуйте снова.")
 
 
 if __name__ == "__main__":
     main()
-
-    
